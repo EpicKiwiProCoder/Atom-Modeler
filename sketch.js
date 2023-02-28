@@ -12,8 +12,17 @@ var shells = 0;
 
 function setup() {
   createCanvas(500, 500);
+  electronColor = createColorPicker("#0000c8")
+  electronColor.position(300,10)
+  kernelColor = createColorPicker("#c8c8c8")
+  kernelColor.position(300,50)
 }
 function draw() {
+  background(255);
+  
+  textSize(textS);
+  textAlign(RIGHT, TOP);
+  // text("Electronen Kleur: ", 300, 00)
   translate(width / 2, height / 2);
   var remainder;
   var shells = 0;
@@ -28,8 +37,7 @@ function draw() {
   
   placedElectrons = [];
   
-  background(255);
-  fill(200);
+  fill(kernelColor.color());
   circle(0, 0, kernRadius * 2);
 
   fill(0);
@@ -64,7 +72,7 @@ function draw() {
     var radius = kernRadius + (150 / shells) * i;
     circle(0, 0, radius * 2);
     for (var angle = 0; angle < 360; angle += 360.0 / e) {
-      fill(0, 0, 200);
+      fill(electronColor.color());
       var x = radius * cos(radians(angle));
       var y = radius * sin(radians(angle));
       circle(x, y, 10);
